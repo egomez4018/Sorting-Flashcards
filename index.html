@@ -63,6 +63,7 @@
         <option value="gradeLevels">Grade Levels</option>
         <option value="readingInterventions">Interventions for Reading</option>
         <option value="telpas">TELPAS</option>
+      <option value="earlyDyslexiaIndicators">Early Dyxlexia</option>
     </select>
 
     <button onclick="startGame()">Start Game</button>
@@ -138,21 +139,74 @@
                 ]
             },
             telpas: {
-                categories: ["Dyslexia", "AD/HD"],
+                categories: ["Dyslexia", "AD/HD", "Dysgraphia"],
                 items: [
                     { name: "Decoding and word recognition", category: "Dyslexia" },
-                    { name: "Difficulty connecting sounds to letters, recognizing sight words, and decoding unfamiliar words", category: "Dyslexia" },
-                    { name: "Multisensory approaches (use of manipulatives, physical gestures, touch-and-read)", category: "Dyslexia" },
-                    { name: "Explicit phonics instruction", category: "Dyslexia" },
-                    { name: "Assistive technology such as audiobooks", category: "Dyslexia" },
+                    { name: "Difficulty with phonological awareness", category: "Dyslexia" },
+                    { name: "Difficulty reading words in isolation", category: "Dyslexia" },
+                    { name: "Difficulty decoding unfamiliar words", category: "Dyslexia" },
+                    { name: "Slow, inaccurate, or labored oral reading", category: "Dyslexia" },
+                    { name: "Difficulty spelling", category: "Dyslexia" },
+                    { name: "Limited reading fluency", category: "Dyslexia" },
+                    { name: "Preschool indicators: Delayed speech", category: "Dyslexia" },
+                    { name: "Preschool indicators: Difficulty with rhyming", category: "Dyslexia" },
+                    { name: "Kindergarten-Grade 1: Difficulty breaking words into smaller parts", category: "Dyslexia" },
+                    { name: "Kindergarten-Grade 1: Difficulty decoding single words", category: "Dyslexia" },
+                    { name: "Grade 2-3: Difficulty recognizing common sight words", category: "Dyslexia" },
+                    { name: "Grade 2-3: Reliance on picture clues or guessing", category: "Dyslexia" },
+                    { name: "Effective instruction: Phonological awareness", category: "Dyslexia" },
+                    { name: "Effective instruction: Syllabication rules", category: "Dyslexia" },
+                    { name: "Effective instruction: Reading comprehension strategies", category: "Dyslexia" },
+                    { name: "Effective instruction: Reading fluency", category: "Dyslexia" },
                     { name: "Sustained attention and focus during reading tasks", category: "AD/HD" },
-                    { name: "Difficulty maintaining concentration, often leading to incomplete comprehension", category: "AD/HD" },
+                    { name: "Difficulty maintaining concentration", category: "AD/HD" },
                     { name: "Chunking reading assignments", category: "AD/HD" },
                     { name: "Using visual cues such as a Pay Attention To list", category: "AD/HD" },
-                    { name: "Incorporating interactive activities", category: "AD/HD" }
+                    { name: "Incorporating interactive activities", category: "AD/HD" },
+                    { name: "Difficulty with handwriting", category: "Dysgraphia" },
+                    { name: "Messy handwriting due to poor formation, improper size, or spacing", category: "Dysgraphia" },
+                    { name: "Slow or labored written work", category: "Dysgraphia" },
+                    { name: "Poor pencil grip", category: "Dysgraphia" },
+                    { name: "Inadequate pressure during handwriting", category: "Dysgraphia" },
+                    { name: "Excessive erasures", category: "Dysgraphia" },
+                    { name: "Inability to recall accurate orthographic patterns", category: "Dysgraphia" },
+                    { name: "Reversals of 'b' and 'd' beyond appropriate time", category: "Dysgraphia" },
+                    { name: "Inability to copy words accurately", category: "Dysgraphia" },
+                    { name: "Avoidance of written tasks", category: "Dysgraphia" },
+                    { name: "Accommodations: Providing printed notes", category: "Dysgraphia" },
+                    { name: "Accommodations: Using graph paper for alignment", category: "Dysgraphia" },
+                    { name: "Accommodations: Assistive technology like dictation tools", category: "Dysgraphia" },
+                    { name: "Accommodations: Referral to occupational therapy", category: "Dysgraphia" }
                 ]
-            }
-        };
+            },
+        
+
+    earlyDyslexiaIndicators: {
+    categories: ["Preschool", "Kindergarten-Grade 1", "Grade 2-3"],
+        items: [
+        { name: "Delayed speech", category: "Preschool" },
+        { name: "Difficulty with rhyming", category: "Preschool" },
+        { name: "Difficulty pronouncing words", category: "Preschool" },
+        { name: "Poor auditory memory of nursery rhymes and chants", category: "Preschool" },
+        { name: "Difficulty adding new words to vocabulary", category: "Preschool" },
+        { name: "Poor word retrieval skills (or inability to recall the right word)", category: "Preschool" },
+        { name: "Trouble learning and naming letters and numbers", category: "Preschool" },
+        { name: "Dislike of print (e.g. doesn't enjoy following along as a book is read aloud)", category: "Preschool" },
+        { name: "Difficulty breaking words into smaller parts or syllables", category: "Kindergarten-Grade 1" },
+        { name: "Difficulty identifying and manipulating sounds", category: "Kindergarten-Grade 1" },
+        { name: "Difficulty remembering the names of letters and their sounds", category: "Kindergarten-Grade 1" },
+        { name: "Difficulty decoding single words (reading words in isolation)", category: "Kindergarten-Grade 1" },
+        { name: "Difficulty spelling words phonetically (the way that they sound) or remembering letter sequences of common words often seen in print", category: "Kindergarten-Grade 1" },
+        { name: "Difficulty recognizing common sight words", category: "Grade 2-3" },
+        { name: "Difficulty recalling the correct sounds for letters and letter patterns in reading", category: "Grade 2-3" },
+        { name: "Difficulty connecting speech sounds with appropriate letter combinations and omitting letters in words for spelling", category: "Grade 2-3" },
+        { name: "Difficulty reading fluently", category: "Grade 2-3" },
+        { name: "Difficulty decoding unfamiliar words", category: "Grade 2-3" },
+        { name: "Reliance on picture clues, story theme, or guessing at words", category: "Grade 2-3" },
+        { name: "Difficulty with written expression", category: "Grade 2-3" }
+    ]
+}
+};
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
