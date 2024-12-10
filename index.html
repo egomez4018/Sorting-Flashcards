@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Sorting Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .bucket {
+            width: 200px;
+            height: 300px;
+            border: 2px dashed #aaa;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .bucket h3 {
+            margin-top: 0;
+        }
+
+        .flashcard {
+            padding: 10px;
+            margin: 5px;
+            background-color: #dfe6e9;
+            border-radius: 5px;
+            cursor: grab;
+        }
+
+        .flashcard.dragging {
+            opacity: 0.5;
+        }
+
+        .bucket.correct {
+            border-color: green;
+        }
+
+        .bucket.wrong {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flashcard Sorting Game</h1>
+
+    <label for="category">Choose a category set:</label>
+    <select id="category">
+        <option value="gradeLevels">Grade Levels</option>
+        <option value="readingInterventions">Interventions for Reading</option>
+        <option value="telpas">TELPAS</option>
+    </select>
+
+    <button onclick="startGame()">Start Game</button>
+
+    <div id="game" style="display:none;">
+        <div class="container" id="buckets"></div>
+        <div id="current-flashcard" style="margin: 20px;"></div>
+    </div>
+
+    <script>
+        const data = {
+            gradeLevels: {
+                categories: ["Kindergarten", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5"],
+                items: [
+                    { name: "Identifies and produces rhyming words", category: "Kindergarten" },
+                    { name: "Identifies upper-case and lower-case letters", category: "Kindergarten" },
+                    { name: "Identifies and matches common sounds that letters represent", category: "Kindergarten" },
+                    { name: "Recognizes that new words are created when letters are changed, added, or deleted", category: "Kindergarten" },
+                    { name: "Identifies, spells, and reads at least 25 high-frequency words", category: "Kindergarten" },
+                    { name: "Understands print directionality", category: "Kindergarten" },
+                    { name: "Demonstrates basic comprehension skills of texts read aloud", category: "Kindergarten" },
+                    { name: "Sounds out new words", category: "Grade 1" },
+                    { name: "Identifies, spells, and reads at least 100 high-frequency words", category: "Grade 1" },
+                    { name: "Demonstrates basic comprehension skills", category: "Grade 1" },
+                    { name: "Recognizes organizational pattern/structure of texts", category: "Grade 1" },
+                    { name: "Decodes words with silent letters, short and long vowels", category: "Grade 2" },
+                    { name: "Fixes mistakes while reading", category: "Grade 2" },
+                    { name: "Uses context to determine the meaning of a word", category: "Grade 2" },
+                    { name: "Reads grade-level text independently with fluency and comprehension", category: "Grade 2" },
+                    { name: "Identifies plot, main idea, and characters", category: "Grade 2" },
+                    { name: "Synthesizes information to create new understanding", category: "Grade 2" },
+                    { name: "Recognizes characteristics and structures of informational and persuasive texts", category: "Grade 2" },
+                    { name: "Understands the use of descriptive, literal, and figurative language", category: "Grade 2" },
+                    { name: "Understands roots, suffixes, and prefixes", category: "Grade 3" },
+                    { name: "Decodes multiple-syllabic words with multiple sound-spelling patterns", category: "Grade 3" },
+                    { name: "Predicts what will happen next", category: "Grade 3" },
+                    { name: "Uses context within and beyond a sentence to determine the meaning of a word", category: "Grade 3" },
+                    { name: "Analyzes basic plot elements and infers more advanced themes", category: "Grade 3" },
+                    { name: "Explains relationships among characters and understands the influence of setting on plot", category: "Grade 3" },
+                    { name: "Recognizes characteristics of argumentative texts", category: "Grade 3" },
+                    { name: "Understands literary techniques including similes, onomatopoeia, and hyperboles", category: "Grade 3" },
+                    { name: "Decodes words with specific rules", category: "Grade 4" },
+                    { name: "Understands homophones", category: "Grade 4" },
+                    { name: "Follows written directions", category: "Grade 4" },
+                    { name: "Uses references and prior knowledge to learn new words", category: "Grade 4" },
+                    { name: "Paraphrases", category: "Grade 4" },
+                    { name: "Analyzes more advanced plot elements (e.g., rising and falling action)", category: "Grade 4" },
+                    { name: "Identifies author's purpose and style choices", category: "Grade 4" },
+                    { name: "Understands literary techniques including metaphor and personification", category: "Grade 4" },
+                    { name: "Recognizes characteristics of multimodal and digital texts", category: "Grade 4" },
+                    { name: "Reads different genres fluently", category: "Grade 5" },
+                    { name: "Identifies most important information in text", category: "Grade 5" }
+                ]
+            },
+            readingInterventions: {
+                categories: ["Phonemic Awareness", "Phonics", "Fluency", "Vocabulary", "Comprehension"],
+                items: [
+                    { name: "Recognizing and manipulating individual sounds and words", category: "Phonemic Awareness" },
+                    { name: "Provide explicit phonemic awareness instruction, including rhyming activities", category: "Phonemic Awareness" },
+                    { name: "Associating sounds with letters and recognizing letter patterns", category: "Phonics" },
+                    { name: "Use systematic and explicit phonics instruction", category: "Phonics" },
+                    { name: "Reading with accuracy, speed, and expression", category: "Fluency" },
+                    { name: "Break down text into smaller sections", category: "Fluency" },
+                    { name: "Use audiobooks", category: "Fluency" },
+                    { name: "Understanding and using a range of words", category: "Vocabulary" },
+                    { name: "Incorporate vocabulary-building activities such as root words", category: "Vocabulary" },
+                    { name: "Use visual aids", category: "Vocabulary" },
+                    { name: "Provide contextualized word usage", category: "Vocabulary" },
+                    { name: "Understanding and interpreting a text", category: "Comprehension" },
+                    { name: "Teach explicit comprehension strategies", category: "Comprehension" },
+                    { name: "Use graphic organizers", category: "Comprehension" },
+                    { name: "Encourage discussion and questioning", category: "Comprehension" }
+                ]
+            },
+            telpas: {
+                categories: ["Dyslexia", "AD/HD"],
+                items: [
+                    { name: "Decoding and word recognition", category: "Dyslexia" },
+                    { name: "Difficulty connecting sounds to letters, recognizing sight words, and decoding unfamiliar words", category: "Dyslexia" },
+                    { name: "Multisensory approaches (use of manipulatives, physical gestures, touch-and-read)", category: "Dyslexia" },
+                    { name: "Explicit phonics instruction", category: "Dyslexia" },
+                    { name: "Assistive technology such as audiobooks", category: "Dyslexia" },
+                    { name: "Sustained attention and focus during reading tasks", category: "AD/HD" },
+                    { name: "Difficulty maintaining concentration, often leading to incomplete comprehension", category: "AD/HD" },
+                    { name: "Chunking reading assignments", category: "AD/HD" },
+                    { name: "Using visual cues such as a Pay Attention To list", category: "AD/HD" },
+                    { name: "Incorporating interactive activities", category: "AD/HD" }
+                ]
+            }
+        };
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function startGame() {
+            const selectedCategory = document.getElementById('category').value;
+            const { categories, items } = data[selectedCategory];
+
+            // Shuffle items
+            const shuffledItems = shuffleArray([...items]);
+
+            // Generate buckets
+            const bucketContainer = document.getElementById('buckets');
+            bucketContainer.innerHTML = '';
+            categories.forEach(category => {
+                const bucket = document.createElement('div');
+                bucket.classList.add('bucket');
+                bucket.setAttribute('data-category', category);
+                bucket.innerHTML = `<h3>${category}</h3>`;
+                bucket.addEventListener('dragover', allowDrop);
+                bucket.addEventListener('drop', drop);
+                bucketContainer.appendChild(bucket);
+            });
+
+            // Show one flashcard at a time
+            const currentFlashcardContainer = document.getElementById('current-flashcard');
+            let currentIndex = 0;
+
+            function displayNextFlashcard() {
+                if (currentIndex < shuffledItems.length) {
+                    const item = shuffledItems[currentIndex];
+                    currentFlashcardContainer.innerHTML = '';
+
+                    const flashcard = document.createElement('div');
+                    flashcard.classList.add('flashcard');
+                    flashcard.setAttribute('draggable', true);
+                    flashcard.setAttribute('data-category', item.category);
+                    flashcard.textContent = item.name;
+                    flashcard.addEventListener('dragstart', dragStart);
+                    flashcard.addEventListener('dragend', dragEnd);
+                    currentFlashcardContainer.appendChild(flashcard);
+                } else {
+                    currentFlashcardContainer.innerHTML = '<p>All items sorted!</p>';
+                }
+            }
+
+            function removeFlashcardFromScreen() {
+                currentIndex++;
+                displayNextFlashcard();
+            }
+
+            displayNextFlashcard();
+
+            document.getElementById('game').style.display = 'block';
+
+            function drop(event) {
+                const draggedCategory = event.dataTransfer.getData('text');
+                const bucketCategory = event.currentTarget.dataset.category;
+
+                if (draggedCategory === bucketCategory) {
+                    event.currentTarget.classList.add('correct');
+                    event.currentTarget.classList.remove('wrong');
+                    removeFlashcardFromScreen();
+                } else {
+                    event.currentTarget.classList.add('wrong');
+                    event.currentTarget.classList.remove('correct');
+                }
+
+                setTimeout(() => {
+                    event.currentTarget.classList.remove('correct', 'wrong');
+                }, 1000);
+            }
+
+            document.querySelectorAll('.bucket').forEach(bucket => {
+                bucket.addEventListener('drop', drop);
+            });
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function dragStart(event) {
+            event.dataTransfer.setData('text', event.target.dataset.category);
+            event.target.classList.add('dragging');
+        }
+
+        function dragEnd(event) {
+            event.target.classList.remove('dragging');
+        }
+    </script>
+</body>
+</html>
