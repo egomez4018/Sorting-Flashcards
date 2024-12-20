@@ -64,6 +64,7 @@
         <option value="readingInterventions">Interventions for Reading</option>
         <option value="telpas">TELPAS</option>
       <option value="earlyDyslexiaIndicators">Early Dyxlexia</option>
+  
     </select>
 
     <button onclick="startGame()">Start Game</button>
@@ -179,6 +180,8 @@
                     { name: "Accommodations: Referral to occupational therapy", category: "Dysgraphia" }
                 ]
             },
+
+
         
 
     earlyDyslexiaIndicators: {
@@ -205,7 +208,40 @@
         { name: "Reliance on picture clues, story theme, or guessing at words", category: "Grade 2-3" },
         { name: "Difficulty with written expression", category: "Grade 2-3" }
     ]
+},
+blends: {
+    categories: ["Consonant Blends (Beginning or Ending)", "Consonant Digraphs", "Silent e", "Vowel Digraphs", "Diphthongs", "R-Controlled Vowels", "Inflectional Endings"],
+    items: [
+        { name: "Identify a consonant blend from a given word (e.g., 'blue' or 'clock')", category: "Consonant Blends (Beginning or Ending)" },
+        { name: "Differentiate between consonant blends (e.g., 'flag') and consonant digraphs (e.g., 'shine')", category: "Consonant Digraphs" },
+        { name: "Recognize the Silent e pattern in words (e.g., 'bake', 'lime')", category: "Silent e" },
+        { name: "Identify vowel digraphs in provided words (e.g., 'paint', 'deep')", category: "Vowel Digraphs" },
+        { name: "Explain the glide between sounds in diphthongs (e.g., 'boy', 'south')", category: "Diphthongs" },
+        { name: "Recognize R-Controlled Vowels in example words (e.g., 'car', 'tiger')", category: "R-Controlled Vowels" },
+        { name: "Understand how inflectional endings (e.g., '-ed' in 'talked', '-ing' in 'sliding') change grammatical function", category: "Inflectional Endings" },
+        { name: "Match example words (e.g., 'play', 'chew', 'hope') to their corresponding phonics concept", category: "Consonant Blends (Beginning or Ending)" },
+        { name: "Identify consonant blends at the beginning of words (e.g., 'br', 'gl' in 'brick' or 'glad')", category: "Consonant Blends (Beginning or Ending)" },
+        { name: "Identify consonant blends at the end of words (e.g., 'nt', 'mp' in 'bent' or 'stomp')", category: "Consonant Blends (Beginning or Ending)" },
+        { name: "Recognize words with consonant digraphs (e.g., 'shine', 'whale')", category: "Consonant Digraphs" },
+        { name: "Understand how the Silent e changes the vowel sound in words like 'hope' or 'cute'", category: "Silent e" },
+        { name: "Identify words with vowel digraphs (e.g., 'bread', 'piece')", category: "Vowel Digraphs" },
+        { name: "Distinguish between vowel digraphs (e.g., 'ai' in 'paint') and diphthongs (e.g., 'oy' in 'boy')", category: "Vowel Digraphs" },
+        { name: "Identify diphthongs in words (e.g., 'point', 'wow')", category: "Diphthongs" },
+        { name: "Recognize R-Controlled Vowels in words like 'fork', 'burn'", category: "R-Controlled Vowels" },
+        { name: "Explain the role of -ed in changing tense (e.g., 'talked', 'shifted')", category: "Inflectional Endings" },
+        { name: "Identify comparative and superlative forms using -er and -est (e.g., 'smaller', 'biggest')", category: "Inflectional Endings" },
+        { name: "Determine which phonics concept applies to a word like 'bake' (Silent e) or 'paint' (vowel digraph)", category: "Silent e" },
+        { name: "Identify consonant blends in multi-syllable words (e.g., 'springtime', 'dragon')", category: "Consonant Blends (Beginning or Ending)" },
+        { name: "Recognize silent letters in consonant digraphs like 'kn' in 'knee' or 'wr' in 'write'", category: "Consonant Digraphs" },
+        { name: "Understand the difference between 'ai' (e.g., 'paint') and 'ay' (e.g., 'play') in vowel digraphs", category: "Vowel Digraphs" },
+        { name: "Identify words with diphthongs that end in 'ow' (e.g., 'wow', 'cow')", category: "Diphthongs" },
+        { name: "Explain the impact of R-Controlled Vowels (e.g., 'ar' in 'car', 'ir' in 'stir') on vowel pronunciation", category: "R-Controlled Vowels" },
+        { name: "Identify the correct inflectional ending in a sentence context (e.g., 'markers' for plural, 'talked' for past tense)", category: "Inflectional Endings" }
+    ]
 }
+
+
+
 };
 
         function shuffleArray(array) {
