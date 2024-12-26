@@ -66,7 +66,11 @@
       <option value="earlyDyslexiaIndicators">Early Dyxlexia</option>
       <option value="blends">Blends</option>
       <option value="phonicsSorting">Phonics Sorting</option>
-      <option value="telpas_PLD">telpas_PLD</option>
+      <option value="telpas_listening">telpas_listening</option>
+      <option value="telpas_speaking">telpas_speaking</option>
+      <option value="telpasReading">telpasReading</option>
+      <option value="telpasWriting">telpasWriting</option>
+
   
     </select>
 
@@ -296,7 +300,7 @@ phonicsSorting: {
 ]
 },
 
-telpas_PLD: {
+telpas_listening: {
     categories: ["Beginning", "Intermediate", "Advanced", "Advanced High"],
     items: [
         { name: "Struggle to understand simple conversations even with familiar topics and linguistic supports.", category: "Beginning" },
@@ -312,6 +316,83 @@ telpas_PLD: {
         { name: "Understand main points, details, and implicit information at a level nearly comparable to peers.", category: "Advanced High" }
     ]
 },
+
+telpasSpeaking: {
+    categories: ["Beginning", "Intermediate", "Advanced", "Advanced High"],
+    items: [
+        { name: "Mainly speak using single words/short phrases with limited high-frequency vocabulary or recently practiced/memorized material.", category: "Beginning" },
+        { name: "May be hesitant or give up when trying to communicate.", category: "Beginning" },
+        { name: "Lack the grammar needed to connect ideas and speak in sentences.", category: "Beginning" },
+        { name: "Errors may hinder overall communication (e.g., speaking in native language).", category: "Beginning" },
+        { name: "Pronunciation significantly inhibits communication.", category: "Beginning" },
+        { name: "Can express simple, original messages, speak using sentences, and participate in short conversations.", category: "Intermediate" },
+        { name: "May hesitate frequently and for long periods.", category: "Intermediate" },
+        { name: "Speak simply using basic vocabulary; rarely speak in detail; speak using mostly simple sentence structures and tenses.", category: "Intermediate" },
+        { name: "Make errors that may hinder overall communication when using more difficult English.", category: "Intermediate" },
+        { name: "Pronunciation can usually be understood by people accustomed to interacting with ELLs.", category: "Intermediate" },
+        { name: "Can participate comfortably in most discussions on familiar topics and academic topics, with some pauses to restate or search for words/phrases to clarify meaning.", category: "Advanced" },
+        { name: "Understand basic grammar features; can narrate and describe in the present, past, and future tenses; learning to use complex sentences and complex grammar features.", category: "Advanced" },
+        { name: "Make errors that interfere somewhat with communication when using complex grammar, long sentences, and less familiar words.", category: "Advanced" },
+        { name: "May mispronounce words, but is usually understood.", category: "Advanced" },
+        { name: "Can participate in extended discussions on social and grade-appropriate academic topics with few hesitations.", category: "Advanced High" },
+        { name: "Communicate effectively using abstract and content-based vocabulary, idioms, and colloquialisms, except with very low-frequency vocabulary.", category: "Advanced High" },
+        { name: "Use English grammar structures and complex sentences to narrate and describe at a level nearly comparable to native English-speaking peers.", category: "Advanced High" },
+        { name: "Make few errors; pronunciation rarely interferes with overall communication.", category: "Advanced High" }
+    ]
+},
+
+telpasReading: {
+    categories: ["Beginning", "Intermediate", "Advanced", "Advanced High"],
+    items: [
+        { name: "Read and understand very limited recently practiced, memorized, or highly familiar English in routine contexts.", category: "Beginning" },
+        { name: "Have a very limited sense of English language structures.", category: "Beginning" },
+        { name: "Vocabulary includes: environmental print; very high-frequency words; and concrete words represented by pictures.", category: "Beginning" },
+        { name: "Read slowly, word by word.", category: "Beginning" },
+        { name: "Highly dependent on visuals and prior knowledge to derive meaning.", category: "Beginning" },
+        { name: "Apply basic reading comprehension skills on level-appropriate text.", category: "Beginning" },
+        { name: "Read and understand vocabulary related to: everyday oral language; literal meanings of common words; common academic/abstract language.", category: "Intermediate" },
+        { name: "Often read slowly and in short phrases; may re-read to clarify meaning.", category: "Intermediate" },
+        { name: "Starting to understand basic English language structures.", category: "Intermediate" },
+        { name: "Understand simple sentences in short, connected texts; occasionally depend on linguistic support.", category: "Intermediate" },
+        { name: "Struggle to independently read and understand grade-level texts.", category: "Intermediate" },
+        { name: "Apply basic and some higher-order comprehension skills to linguistically-accommodated texts.", category: "Intermediate" },
+        { name: "Read and understand, with SLA support, vocabulary used in social and academic contexts, but have difficulty with lower frequency words.", category: "Advanced" },
+        { name: "Starting to understand words/phrases beyond their literal meaning and multiple meanings of common words.", category: "Advanced" },
+        { name: "Read longer phrases and simple sentences from familiar text at appropriate speed.", category: "Advanced" },
+        { name: "Starting to construct meaning of grade-appropriate text.", category: "Advanced" },
+        { name: "Can apply basic and higher-order comprehension skills, but are occasionally dependent on linguistic support with unfamiliar topics.", category: "Advanced" },
+        { name: "Can do the following at a level nearly comparable to native English-speaking peers (when reading grade-appropriate text):", category: "Advanced High" },
+        { name: "Apply, with minimal SLA support, basic and higher-order comprehension skills.", category: "Advanced High" },
+        { name: "Read and understand vocabulary, with some exceptions when low-frequency vocabulary is used.", category: "Advanced High" },
+        { name: "Generally read with appropriate rate, speed, intonation, and expression.", category: "Advanced High" },
+        { name: "Construct meaning.", category: "Advanced High" }
+    ]
+},
+
+telpasWriting: {
+    categories: ["Beginning", "Intermediate", "Advanced", "Advanced High"],
+    items: [
+        { name: "Cannot express ideas in writing or engage meaningfully in content-area writing assignments.", category: "Beginning" },
+        { name: "Can label, list, and copy.", category: "Beginning" },
+        { name: "Can use high-frequency words/phrases and short, simple sentences (in the present tense) based primarily on recently practiced or highly familiar material.", category: "Beginning" },
+        { name: "Frequent errors (spelling patterns, word order, literal translations, use of native language) may hinder or prevent understanding.", category: "Beginning" },
+        { name: "Have a limited ability to express ideas in writing and engage meaningfully in content-area writing assignments.", category: "Intermediate" },
+        { name: "Can write short, simple sentences in present tense (occasionally future and past) and use high-frequency vocabulary.", category: "Intermediate" },
+        { name: "Writing displays: an oral tone; loosely connected text; few cohesive devices; repetition of ideas; undetailed descriptions/explanations/narrations; difficulty expressing abstract ideas.", category: "Intermediate" },
+        { name: "Errors may be frequent; some writing may be understood only by those accustomed to interacting with ELLs.", category: "Intermediate" },
+        { name: "Can use English, with SLA support, to express ideas in writing and engage meaningfully in content-area writing assignments; SLA support is needed for challenging topics.", category: "Advanced" },
+        { name: "Use basic (and occasionally more complex) verbs, grammar, and sentence patterns.", category: "Advanced" },
+        { name: "Can use academic tone in academic writing; use common cohesive devices (with some repetition); narrate, explain and describe in some detail.", category: "Advanced" },
+        { name: "Occasional errors, but writing is usually understood.", category: "Advanced" },
+        { name: "Can use English, with minimal SLA support, to express ideas in writing and engage meaningfully in content-area writing assignments.", category: "Advanced High" },
+        { name: "Demonstrate, with minimal SLA support, elements of grade-appropriate writing.", category: "Advanced High" },
+        { name: "Write at a level nearly comparable to native English-speaking peers in clarity and precision (regarding vocabulary and language structures).", category: "Advanced High" },
+        { name: "Occasional difficulty with naturalness of phrasing.", category: "Advanced High" },
+        { name: "Errors are minor and rarely interfere with communication.", category: "Advanced High" }
+    ]
+},
+
+
 
 
 
